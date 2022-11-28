@@ -18,7 +18,7 @@ local Section = teleport:NewSection("settings")
 
 Section:NewButton("TP DevilFruit", "teleport to DevilFruit", function()
 local teleport_table = {
-    location1 = Vector3.new(), -- your desired position
+    location1 = Vector3.new(1611.09485, 16.2000656, 133.827881, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469), -- your desired position
     location2 = Vector3.new()  -- your desired position
 }
 
@@ -30,10 +30,10 @@ local lp = game.Players.LocalPlayer
 function bypass_teleport(v)
     if lp.Character and 
     lp.Character:FindFirstChild('HumanoidRootPart') then
-        local cf = CFrame.new(-1611.09485, 16.2000656, 133.827881, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469)
+        local cf = CFrame.new(v)
         local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
         a:Play()
-        a.Completed:Wait(5)
+        -- a.Completed:Wait()
         -- print('Teleporting Done!')
     end
 end
