@@ -33,7 +33,7 @@ function bypass_teleport(v)
         local cf = CFrame.new(-1611.09485, 16.2000656, 133.827881, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469)
         local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
         a:Play()
-        -- a.Completed:Wait()
+        a.Completed:Wait(5)
         -- print('Teleporting Done!')
     end
 end
