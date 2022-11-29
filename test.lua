@@ -12,30 +12,51 @@ Section:NewToggle("MegaJump", "MegaJump ON/OFF", function(state)
     end
 end)
 
+Section:NewToggle("MegaSpeed", "MegaSpeed ON/OFF", function(state)
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 150
+    else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+    end
+end)
+
 local teleport = Window:NewTab("teleport")
 local Section = teleport:NewSection("settings")
 
+Section:NewButton("TP SHOP BLOX FRUITS", "teleport", function()
 
-Section:NewButton("TP DevilFruit", "teleport to DevilFruit", function()
-local teleport_table = {
-    location1 = Vector3.new(1611.09485, 16.2000656, 133.827881, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469) -- your desired position
-}
-
-local tween_s = game:GetService('TweenService')
-local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
-
-local lp = game.Players.LocalPlayer
-
-function bypass_teleport(v)
-    if lp.Character and 
-    lp.Character:FindFirstChild('HumanoidRootPart') then
-        local cf = CFrame.new(v)
-        local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
-        a:Play()
-        -- a.Completed:Wait()
-        -- print('Teleporting Done!')
-    end
+    local plr = game:service"Players".LocalPlayer;
+local tween_s = game:service"TweenService";
+local info = TweenInfo.new(5,Enum.EasingStyle.Quad); --Everytime I tried going under 5, I got kicked/detected
+function tp(...)
+   local tic_k = tick();
+   local params = {...};
+   local cframe = CFrame.new(params[1],params[2],params[3]);
+   local tween,err = pcall(function()
+       local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+       tween:Play();
+   end)
+   if not tween then return err end
 end
+tp(-1441.53357, 61.1999283, 7.7518611, 0.499959469, -0, -0.866048813, 0, 1, -0, 0.866048813, 0, 0.499959469);
 
-bypass_teleport(teleport_table.location1)
+end)
+
+Section:NewButton("TP NAME", "teleport", function()
+
+    local plr = game:service"Players".LocalPlayer;
+local tween_s = game:service"TweenService";
+local info = TweenInfo.new(5,Enum.EasingStyle.Quad); --Everytime I tried going under 5, I got kicked/detected
+function tp(...)
+   local tic_k = tick();
+   local params = {...};
+   local cframe = CFrame.new(params[1],params[2],params[3]);
+   local tween,err = pcall(function()
+       local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+       tween:Play();
+   end)
+   if not tween then return err end
+end
+tp(-- cord);
+
 end)
